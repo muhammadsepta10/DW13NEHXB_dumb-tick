@@ -5,11 +5,9 @@ import {
   Container,
   Row,
   Col,
-  Image,
   Form,
   Button,
-  InputGroup,
-  FormControl
+  InputGroup
 } from "react-bootstrap";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -52,12 +50,11 @@ export default class Register extends Component {
         img
       })
       .then(res => {
-        alert("login sukses");
+        alert("registrasi sukses");
         window.location.href = "http://localhost:3000/login";
       })
       .catch(res => {
         alert("email anda telah terdaftar, silahkan login!!");
-        window.location.href = "http://localhost:3000/login";
       });
     // window.location.href = "http://localhost:3000/login";
   };
@@ -84,6 +81,7 @@ export default class Register extends Component {
                 >
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
+                      required
                       type="text"
                       placeholder="Enter rname"
                       name="name"
@@ -92,6 +90,7 @@ export default class Register extends Component {
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
+                      required
                       type="phone"
                       placeholder="phone Number"
                       name="phoneNumber"
@@ -100,6 +99,7 @@ export default class Register extends Component {
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
+                      required
                       type="phone"
                       placeholder="Image(url)"
                       name="image"
@@ -108,6 +108,7 @@ export default class Register extends Component {
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
+                      required
                       name="email"
                       onChange={this.handlerChange}
                       type="email"
@@ -117,6 +118,7 @@ export default class Register extends Component {
 
                   <InputGroup className="mb-3">
                     <Form.Control
+                      required
                       placeholder="Password"
                       name="password"
                       onChange={this.handlerChange}

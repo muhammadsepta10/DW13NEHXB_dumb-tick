@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ export default class Category extends Component {
         to={this.props.path}
       >
         <Card
-          className="m-2"
+          className="m-2 shadow"
           style={{
             width: 250,
             height: 100,
@@ -21,7 +21,12 @@ export default class Category extends Component {
           }}
         >
           <Card.Body className="text-white h2 m-auto ">
-            <p className="mx-auto my-auto">{this.props.category}</p>
+            <p
+              className="mx-auto my-auto"
+              style={{ textTransform: "capitalize" }}
+            >
+              {this.props.category}
+            </p>
           </Card.Body>
         </Card>
       </Link>

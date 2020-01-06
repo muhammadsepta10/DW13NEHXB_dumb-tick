@@ -1,8 +1,15 @@
 import { combineReducers } from "redux";
-import category from "./reducer/category";
-import event from "./reducer/event";
+import home from "./reducer/home";
+import categoryPage from "./reducer/categoryPage";
+import eventDetaile from "./reducer/eventDetaile";
+import user from "./reducer/user";
+import order from "./reducer/order";
+// import event from "./reducer/event";
 
 export default combineReducers({
-  category: category,
-  event: event
+  home: home,
+  categoryPage: categoryPage,
+  eventDetaile: eventDetaile,
+  user: user,
+  order: order
 });

@@ -5,7 +5,6 @@ import {
   Container,
   Row,
   Col,
-  Image,
   Form,
   Button,
   InputGroup
@@ -49,7 +48,7 @@ export default class Login extends Component {
         window.location.href = "http://localhost:3000/";
       })
       .catch(res => {
-        window.location.href = "http://localhost:3000/login";
+        alert("login failed, your email or password is Wrong");
       });
   };
 
@@ -81,11 +80,13 @@ export default class Login extends Component {
                       type="email"
                       placeholder="Enter email"
                       onChange={this.handlerChange}
+                      require
                     />
                   </Form.Group>
 
                   <InputGroup className="mb-3">
                     <Form.Control
+                      required
                       name="password"
                       placeholder="Password"
                       type={this.state.hidden ? "password" : "text"}

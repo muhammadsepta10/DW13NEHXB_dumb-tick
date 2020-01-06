@@ -34,10 +34,16 @@ export default class Header extends Component {
       );
     else
       return (
-        <Dropdown variant="link-primary">
-          <Dropdown.Toggle id="dropdown-custom-components">
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="link"
+            className="text-white my-1"
+            style={{ textDecoration: "none" }}
+            id="dropdown-custom-components"
+          >
             <Image
               style={{ width: 30 }}
+              className="mr-2"
               src={localStorage.getItem("image")}
               roundedCircle
             />
@@ -45,9 +51,33 @@ export default class Header extends Component {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item eventKey="5">Profile</Dropdown.Item>
-            <Dropdown.Item eventKey="4">My Ticket</Dropdown.Item>
-            <Dropdown.Item eventKey="3">Payment</Dropdown.Item>
+            <Dropdown.Item eventKey="5">
+              <Link
+                to="/profile"
+                style={{ textDecoration: "none" }}
+                className="text-dark"
+              >
+                Profile
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item eventKey="4">
+              <Link
+                to="/my_ticket"
+                style={{ textDecoration: "none" }}
+                className="text-dark"
+              >
+                My Ticket
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item eventKey="3">
+              <Link
+                to="/payment"
+                style={{ textDecoration: "none" }}
+                className="text-dark"
+              >
+                Payment
+              </Link>
+            </Dropdown.Item>
             <Dropdown.Item eventKey="2">
               <Link
                 to="/input_event"
@@ -64,21 +94,6 @@ export default class Header extends Component {
         </Dropdown>
       );
   }
-
-  // const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  //   <a
-  //     href=""
-  //     ref={ref}
-  //     onClick={e => {
-  //       e.preventDefault();
-  //       onClick(e);
-  //     }}
-  //   >
-  //     {/* Render custom icon here */}
-  //     &#x25bc;
-  //     {children}
-  //   </a>
-  // ));
   render() {
     return (
       <div>

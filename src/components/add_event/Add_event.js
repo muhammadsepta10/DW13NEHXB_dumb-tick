@@ -4,6 +4,7 @@ import Footer from "./../Footer";
 import { Container, Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { addEvent } from "./../../_redux/action/event";
 
 export default class Add_event extends Component {
   constructor() {
@@ -30,39 +31,57 @@ export default class Add_event extends Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  handleChangeFile = e => {
+    this.setState({ [e.target.name]: e.target.files[0] });
+  };
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.state);
-    const name = this.state.name;
-    const category = this.state.category;
-    const startTime = this.state.startTime;
-    const endTime = this.state.endTime;
-    const price = this.state.price;
-    const descrption = this.state.descrption;
-    const addres = this.state.addres;
-    const urlMap = this.state.urlMap;
-    const img = this.state.img;
-    const createdBy = localStorage.getItem("id");
-    axios
-      .post("http://localhost:5000/api/events/input", {
-        name,
-        category,
-        startTime,
-        endTime,
-        price,
-        descrption,
-        addres,
-        urlMap,
-        img,
-        createdBy
-      })
-      .then(res => {
-        alert("Data Berahsil di input");
-        window.location.href = "http://localhost:3000/input_event";
-      })
-      .catch(err => {
-        alert("eror");
-      });
+    // const name = this.state.name;
+    // const category = this.state.category;
+    // const startTime = this.state.startTime;
+    // const endTime = this.state.endTime;
+    // const price = this.state.price;
+    // const descrption = this.state.descrption;
+    // const addres = this.state.addres;
+    // const urlMap = this.state.urlMap;
+    // const img = this.state.img;
+    // const createdBy = localStorage.getItem("id");
+    // axios
+    //   .post("http://localhost:5000/api/events/input", {
+    //     name,
+    //     category,
+    //     startTime,
+    //     endTime,
+    //     price,
+    //     descrption,
+    //     addres,
+    //     urlMap,
+    //     img,
+    //     createdBy
+    //   })
+    //   .then(res => {
+    //     alert("Data Berahsil di input");
+    //     window.location.href = "http://localhost:3000/input_event";
+    //   })
+    //   .catch(err => {
+    //     alert("eror");
+    //   });
+
+    // this.props.dispatch(
+    //   addEvent(
+    //     name,
+    //     category,
+    //     startTime,
+    //     endTime,
+    //     price,
+    //     descrption,
+    //     addres,
+    //     urlMap,
+    //     img,
+    //     createdBy
+    //   )
+    // );
   };
   render() {
     return (
@@ -88,7 +107,9 @@ export default class Add_event extends Component {
               >
                 <option hidden></option>
                 {this.state.data.map(item => (
-                  <option value={item.id}>{item.name}</option>
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
                 ))}
               </Form.Control>
             </Form.Group>
@@ -143,9 +164,9 @@ export default class Add_event extends Component {
             <Form.Group>
               <Form.Control
                 name="img"
-                type="text"
+                type="file"
                 placeholder="Image"
-                onChange={this.handleChange}
+                onChange={this.handleChangeFile}
               />
             </Form.Group>
             <Button variant="primary" className="mx-auto" type="submit">
